@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "tutorial_db",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": "5433"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "tutorial_db",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": "5433"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "tutorial_db",
+    "host": "localhost",
+    "dialect": "postgres",
+    "port": "5433"
+  }
+}
