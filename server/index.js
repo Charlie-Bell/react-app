@@ -1,9 +1,15 @@
 // Create express app
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 // Ensures express uses json requests/responses
 app.use(express.json());
+const corsOptions = {
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST']
+};
+app.use(cors(corsOptions));
 
 // Declare database from models
 const db = require('./models');
