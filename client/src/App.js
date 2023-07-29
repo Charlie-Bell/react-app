@@ -6,14 +6,16 @@ import CreatePost from './pages/CreatePost';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Link to="/createpost">Create a post</Link>
-        <Link to="/">Home</Link>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/createpost" element={<CreatePost />} />
-        </Routes>
-      </Router>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-1">
+            <Home />
+          </div>
+          <div className="col-md-1">
+            <CreatePost />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

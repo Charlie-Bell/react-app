@@ -1,7 +1,12 @@
 // Create express app
 const express = require('express');
-const app = express();
+const http = require('http');
 const cors = require('cors');
+const socketIO = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIO(server);
 
 // Ensures express uses json requests/responses
 app.use(express.json());
@@ -9,7 +14,13 @@ const corsOptions = {
     origin: ['http://localhost:3000'],
     methods: ['GET', 'POST']
 };
+// Cors corss origin policy
 app.use(cors(corsOptions));
+// Middleware to attach the 'io' object to the request
+app.use((req, res, next) => {
+    req.io = io;
+    next();
+  });
 
 // Declare database from models
 const db = require('./models');
