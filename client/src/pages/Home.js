@@ -1,9 +1,12 @@
 import React from 'react'
 import axios from "axios";
-import { useEffect, useState } from "react";
-import io from 'socket.io-client';
+import { useEffect, useState, useContext } from "react";
+import { SocketContext } from "../context/socket";
 
 function Home() {
+  const socket = useContext(SocketContext);
+  console.log(socket)
+
   // Declare posts state as an empty list.
   const [posts, setPosts] = useState([]);
 
@@ -14,21 +17,28 @@ function Home() {
     });
   }, []);
 
-  useEffect(() => {
-    // Establish a WebSocket connection to the server
-    const socket = io('http://localhost:8080/posts');
+  useEffect(()=> {
+    socket.on('connect', () => { 
+      console.log('Connected!');
+    });
+  }, [socket]);
+  
+  useEffect(()=> {
+    socket.on('Test', data => {
+      console.log(data);
+      console.log("Test status:")
+      console.log(socket)
+      console.log("Test status end.")
+    });
+  }, [socket]);
 
-    // Listen for the 'newPosts' event from the server
-    socket.on('newPosts', (newPosts) => {
-      // Update the state with the new data
+  useEffect(() => {
+    socket.on('newPosts', newPosts => {
+      // Listen for the 'newPosts' event from the server
+      console.log("Refreshing posts!")
       setPosts((prevPosts) => [...prevPosts, newPosts]);
     });
-
-    // Clean up the WebSocket connection on unmount
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  }, [socket]);
 
   return (
     <div>

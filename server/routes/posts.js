@@ -23,11 +23,14 @@ router.post('/', async (req, res) => {
     const newPosts = await Posts.findOne({
         order: [['createdAt', 'DESC']]
     });
-    console.log("New post below:")
-    console.log(newPosts);
     // Emit the new data to all connected clients
-    handleNewPosts(req.io, newPosts);
+    // handleNewPosts(req.io, newPosts);
+    req.io.emit("Test", "Test");
+    req.io.emit('newPosts', newPosts);
     res.json(newPosts);
+    setTimeout(() => {
+        console.log("Emitted!");
+    }, 2000);
 });
 
 module.exports = router;

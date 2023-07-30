@@ -1,21 +1,22 @@
 // Create express app
 const express = require('express');
-const http = require('http');
 const cors = require('cors');
-const socketIO = require('socket.io');
 
-const app = express();
-const server = http.createServer(app);
-const io = socketIO(server);
-
-// Ensures express uses json requests/responses
-app.use(express.json());
 const corsOptions = {
     origin: ['http://localhost:3000'],
     methods: ['GET', 'POST']
 };
+
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, corsOptions);
+
+// Ensures express uses json requests/responses
+app.use(express.json());
+
 // Cors corss origin policy
 app.use(cors(corsOptions));
+
 // Middleware to attach the 'io' object to the request
 app.use((req, res, next) => {
     req.io = io;
@@ -32,7 +33,7 @@ app.use('/posts', postRouter);
 
 // Init database, then when promise is fulfilled, start app.
 db.sequelize.sync().then(() => {
-    app.listen(8080, () => {
+    server.listen(8080, () => {
         console.log("Server running on port 8080.");
     });
 });
