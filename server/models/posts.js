@@ -1,17 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
     const Posts = sequelize.define('posts', {
-        title: {
+        comment: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        postText: {
+        reply: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
+        }
     });
 
     return Posts

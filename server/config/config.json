@@ -5,7 +5,8 @@
     "database": "tutorial_db",
     "host": "localhost",
     "dialect": "postgres",
-    "port": "5433"
+    "port": "5433",
+    "logging": false
   },
   "test": {
     "username": "postgres",
@@ -13,7 +14,8 @@
     "database": "tutorial_db",
     "host": "localhost",
     "dialect": "postgres",
-    "port": "5433"
+    "port": "5433",
+    "logging": false
   },
   "production": {
     "username": "postgres",
@@ -21,6 +23,7 @@
     "database": "tutorial_db",
     "host": "localhost",
     "dialect": "postgres",
-    "port": "5433"
+    "port": "5433",
+    "logging": false
   }
 }

@@ -29,8 +29,8 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   cursor: pointer;
 }
-.post .title {
-  flex: 20%;
+.post .comment {
+  flex: 50%;
   border-bottom: 1px solid lightgray;
   background-color: dodgerblue;
   display: grid;
@@ -38,14 +38,14 @@ body {
   color: white;
 }
 
-.post .body {
-  flex: 60%;
+.post .reply {
+  flex: 50%;
   display: grid;
   place-content: center;
 }
 
 .post .footer {
-  flex: 20%;
+  flex: 0%;
   border-top: 1px solid lightgray;
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@ body {
 }
 
 .formContainer #inputCreatePost {
-  height: 40px;
+  height: 200px;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px solid grey;
