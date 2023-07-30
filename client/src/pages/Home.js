@@ -15,9 +15,7 @@ function Home() {
     axios.get("http://localhost:8080/posts").then((response) => {
       setPosts(response.data);
     });
-  }, []);
 
-  useEffect(() => {
     socket.on('newPosts', newPosts => {
       // Listen for the 'newPosts' event from the server
       console.log("Refreshing posts!")

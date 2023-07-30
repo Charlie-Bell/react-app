@@ -33,9 +33,6 @@ router.post('/', async (req, res) => {
         }
     );
 
-    console.log("Result:")
-    console.log(response)
-
     // Create post in database
     await Posts.create(response);
     // Get the newly inserted post
@@ -45,19 +42,8 @@ router.post('/', async (req, res) => {
     });
     // Emit the new data to all connected clients
     // handleNewPosts(req.io, newPosts);
-    req.io.on('connection', async (socket) => {
-        console.log("Connected!");
-        console.log(socket.body);
-        req.io.emit("Test", "Test");
-        req.io.emit('newPosts', newPosts);
-    });
+    req.io.emit('newPosts', newPosts);
     res.json(newPosts);
-    setTimeout(() => {
-        console.log("Emitted!");
-    }, 2000);
-
-
-
 });
 
 module.exports = router;
