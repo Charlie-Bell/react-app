@@ -20,8 +20,9 @@ router.post('/', async (req, res) => {
     // Create post in database
     await Posts.create(post);
     // Get the newly inserted post
-    const newPosts = await Posts.findOne({
-        order: [['createdAt', 'DESC']]
+    const newPosts = await Posts.findAll({
+        order: [['createdAt', 'DESC']],
+        limit: 10
     });
     // Emit the new data to all connected clients
     // handleNewPosts(req.io, newPosts);

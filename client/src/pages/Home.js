@@ -17,21 +17,6 @@ function Home() {
     });
   }, []);
 
-  useEffect(()=> {
-    socket.on('connect', () => { 
-      console.log('Connected!');
-    });
-  }, [socket]);
-  
-  useEffect(()=> {
-    socket.on('Test', data => {
-      console.log(data);
-      console.log("Test status:")
-      console.log(socket)
-      console.log("Test status end.")
-    });
-  }, [socket]);
-
   useEffect(() => {
     socket.on('newPosts', newPosts => {
       // Listen for the 'newPosts' event from the server
