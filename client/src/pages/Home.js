@@ -19,7 +19,7 @@ function Home() {
     socket.on('newPosts', newPosts => {
       // Listen for the 'newPosts' event from the server
       console.log("Refreshing posts!")
-      setPosts((prevPosts) => [...prevPosts, newPosts]);
+      setPosts(newPosts);
     });
   }, [socket]);
 
@@ -28,8 +28,8 @@ function Home() {
       { posts.map((value, key) => {
         return (
           <div className="post">
-            <div className="comment">{value.comment}</div>
-            <div className="reply">{value.reply}</div>
+            <div className="comment"><div className='body'>{value.comment}</div></div>
+            <div className="reply"><div className='body'>{value.reply}</div></div>
           </div>
         ); 
       }) }

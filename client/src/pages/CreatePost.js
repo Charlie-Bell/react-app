@@ -24,7 +24,7 @@ function CreatePost() {
                 <Form className="formContainer">
                     <label>Comment: </label>
                     <ErrorMessage name="comment" component="span" />
-                    <Field id="inputCreatePost" name="comment" placeholder="(Ex. Comment)" />
+                    <Field id="inputCreatePost" as="textarea" name="comment" placeholder="(Ex. Comment)" />
                     <button type="submit">Post</button>
                 </Form>
             </Formik>
